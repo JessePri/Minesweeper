@@ -1,0 +1,26 @@
+    }
+    toReturn = std::move(temp.str());
+    cout << "toReturn: " << endl << toReturn << endl;
+}
+
+void huffman_tree::Traverse(TreeNode*& node, char& toReturn, char& bit, bool& leaf) const {
+    if (bit == '1') {
+        node = node->right;
+    } else {
+        node = node->left;
+    }
+    if (node == nullptr) {
+        ++bit;
+    } else {
+        toReturn = node->value;
+        leaf = node->left == nullptr && node->right == nullptr;
+    }
+}
+
+
+
+void huffman_tree::PrintDictionary() {
+    for (pair<char, string> dp : dictionary) {
+        cout << "Character: " << dp.first << " Bits: " << dp.second << endl;
+    }
+}
